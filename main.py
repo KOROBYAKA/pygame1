@@ -1,7 +1,7 @@
 import pygame
 from gun import Gun
 import controls
-
+from pygame.sprite import Group
 
 def main():
 
@@ -10,13 +10,13 @@ def main():
     pygame.display.set_caption("Python noob invaders")
     bg_color = (0,30,0)
     gun = Gun(screen)
-
+    bullets = Group()
     while True:
-        controls.events(gun)
+        controls.events(screen, gun, bullets)
         gun.update_gun()
-        screen.fill(bg_color)
-        gun.output()
-        pygame.display.flip()
+        controls.update_bullets(bullets)
+        controls.update(bg_color, screen, gun, bullets)
+
 
 
 

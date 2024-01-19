@@ -1,8 +1,10 @@
+import time
+import asyncio
 import pygame, sys
+from bullet import Bullet
 
 
-
-def events(gun):
+def events(screen,gun,bullets):
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -14,6 +16,13 @@ def events(gun):
             if event.key == pygame.K_LEFT:
                 #to the left
                     gun.mleft = True
+            if event.key == pygame.K_SPACE:
+                    new_bullet = Bullet(screen, gun)
+                    bullets.add(new_bullet)
+
+
+
+
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 #to the right
@@ -21,6 +30,23 @@ def events(gun):
             if event.key == pygame.K_LEFT:
                 #to the left
                     gun.mleft = False
+
+
+
+def update(bg_color, screen, gun, bullets):
+    screen.fill(bg_color)
+    for bullet in bullets.sprites():
+        bullet.draw_bullet()
+    gun.output()
+    pygame.display.flip()
+
+
+def update_bullets(bullets):
+    """updates bullets positions"""
+    bullets.update()
+    for bullet in bullets:
+        if bullet.rect.bottom <=    0:
+            bullets.remove(bullet)
 
 
 
