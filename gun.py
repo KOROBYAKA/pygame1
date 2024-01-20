@@ -5,7 +5,7 @@ import pygame, math
 
 
 #some global variables
-move_speed = 1.1/math.sqrt(2)
+move_speed = 10/math.sqrt(2)
 
 
 class Gun():
@@ -33,15 +33,15 @@ class Gun():
 
     def update_gun(self):
         """update of gun position"""
-        if self.mright and self.rect.right < self.screen_rect.right +28:
+        if self.mright and self.rect.right < self.screen_rect.right -5:
             self.gun_center += move_speed
-        if self.mleft and self.rect.left >  self.screen_rect.left +28:
+        if self.mleft and self.rect.left >  self.screen_rect.left -5:
             self.gun_center -= move_speed
 
         self.rect.centerx = self.gun_center
 
 
-    #def shoot(self):
+
 
 
 

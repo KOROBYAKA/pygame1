@@ -37,7 +37,7 @@ class Bullet(pygame.sprite.Sprite):
         super(Bullet, self).__init__()
         self.screen = screen
         self.rect = pygame.Rect(0, 0, 4, 12)
-        self.speed = 2/math.sqrt(2) + random_speed()
+        self.speed = 20/math.sqrt(2) + random_speed()
         self.color = randomColor()
         self.rect.centerx = gun.rect.centerx
         self.rect.top = gun.rect.top
