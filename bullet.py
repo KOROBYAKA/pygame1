@@ -36,7 +36,7 @@ class Bullet(pygame.sprite.Sprite):
         """making bullet at actual gun position"""
         super(Bullet, self).__init__()
         self.screen = screen
-        self.rect = pygame.Rect(0, 0, 4, 12)
+        self.rect = pygame.Rect(0, 0, 10, 20  )
         self.speed = 20/math.sqrt(2) + random_speed()
         self.color = randomColor()
         self.rect.centerx = gun.rect.centerx
@@ -52,5 +52,5 @@ class Bullet(pygame.sprite.Sprite):
 
     def draw_bullet(self):
         """drawing bullet"""
-        for i in range(1,10):
-            pygame.draw.rect(self.screen, self.color, self.rect)
+
+        pygame.draw.rect(self.screen, self.color, self.rect)

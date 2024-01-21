@@ -3,6 +3,9 @@ from gun import Gun
 import controls
 from pygame.sprite import Group
 from enemie import Enemy
+from stats import  Stats
+from scores import Scores
+
 
 def main():
 
@@ -14,14 +17,17 @@ def main():
     bullets = Group()
     enemyGroup = Group()
     controls.create_army(screen, enemyGroup)
-
+    stats = Stats()
+    scores = Scores(screen, stats)
 
     while True:
+
         controls.events(screen, gun, bullets)
         gun.update_gun()
-        controls.update_enemies(enemyGroup)
-        controls.update(bg_color, screen, gun, enemyGroup,bullets)
-        controls.update_bullets(bullets)
+        controls.update(bg_color, screen, gun, enemyGroup,bullets, stats, scores)
+        controls.update_enemies(gun, enemyGroup,stats, screen, bullets, scores)
+        controls.update_bullets(enemyGroup, bullets, screen, stats, scores)
+
 
 
 

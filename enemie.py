@@ -22,7 +22,7 @@ class Enemy(pygame.sprite.Sprite):
 
 
     def update(self):
-        self.y += 1
+        self.y += 0.05
         self.rect.y = self.y
 
 

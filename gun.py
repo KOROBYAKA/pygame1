@@ -1,16 +1,18 @@
 import pygame, math
+from pygame.sprite import Sprite
 
 #gun logic
 
 
 
 #some global variables
-move_speed = 10/math.sqrt(2)
+move_speed = 1.5/math.sqrt(2)
 
 
 class Gun():
 
     def __init__(self,screen):
+        super(Gun, self).__init__()
         """Gun initialization"""
         self.screen = screen
         self.image = pygame.image.load('images/space_ship.png')
@@ -41,7 +43,9 @@ class Gun():
         self.rect.centerx = self.gun_center
 
 
-
+    def create_gun(self):
+        """make a new gun in the center"""
+        self.gun_center = self.screen_rect.centerx
 
 
 
